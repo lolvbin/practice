@@ -1,32 +1,33 @@
 ﻿
-//Tentar usar depois com Try.Parse(), ao inves de parse comum para pratica e uso mais seguro
-//Tentar fazer tambem com do-while tambem, para pratica
+List<double> nums = new List<double>();
 
-using System.Security.Cryptography;
+System.Console.WriteLine("Quantas notas serão digitadas para calculo da media?");
+int n = int.Parse(Console.ReadLine());
 
-var rng = new Random();
 
-System.Console.WriteLine(" --- Jogo da adivinhação --- ");
-
-System.Console.WriteLine("Pensando...");
-int randNumb = rng.Next(1, 20);
-
-System.Console.Write("Pensei em um número de 1 a 20, qual acha que é: ");
-int number = int.Parse(Console.ReadLine());
-
-while (number != randNumb)
+for(int i = 1; i <= n; i++)
 {
-    if(number > randNumb)
-    {
-        System.Console.Write("Muito alto! \nTente novamente: ");
-        number = int.Parse(Console.ReadLine());
-    }
-    else
-    {
-        System.Console.Write("Muito baixo! \nTente novamente: ");
-        number = int.Parse(Console.ReadLine());
-    }
+    System.Console.Write($"Nota {i}: ");
+    double note = double.Parse(Console.ReadLine());
+    nums.Add(note);
 }
 
-System.Console.WriteLine($"Parabéns você acertou o número! \nEle era: {randNumb}");
+double MedAri = nums.Sum() / n;
 
+if (MedAri >= 7)
+{
+    System.Console.WriteLine();
+    System.Console.WriteLine("Aprovado caba");
+}else if (MedAri <= 6.9 && MedAri >= 5)
+{
+    System.Console.WriteLine();
+    System.Console.WriteLine("Recuperação meu chapa");
+}
+else
+{
+    System.Console.WriteLine();
+    System.Console.WriteLine("Reprovado meno");
+}
+
+System.Console.WriteLine();
+System.Console.WriteLine($"Sua media foi: {MedAri:F1}");
