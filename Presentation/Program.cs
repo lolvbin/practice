@@ -1,32 +1,25 @@
-﻿
-//Tentar usar depois com Try.Parse(), ao inves de parse comum para pratica e uso mais seguro
-//Tentar fazer tambem com do-while tambem, para pratica
+﻿using System;
+using System.Globalization;
+using System.Linq;
 
-using System.Security.Cryptography;
+System.Console.Write("Digite una frase ae: ");
+string fraseD = Console.ReadLine().ToLower();
+int contVogais = 0;
+int contConsoante = 0;
 
-var rng = new Random();
+char[] vogais = ['a','e','i','o','u'];
 
-System.Console.WriteLine(" --- Jogo da adivinhação --- ");
-
-System.Console.WriteLine("Pensando...");
-int randNumb = rng.Next(1, 20);
-
-System.Console.Write("Pensei em um número de 1 a 20, qual acha que é: ");
-int number = int.Parse(Console.ReadLine());
-
-while (number != randNumb)
+foreach (char letra in fraseD)
 {
-    if(number > randNumb)
+    if (vogais.Contains(letra))
     {
-        System.Console.Write("Muito alto! \nTente novamente: ");
-        number = int.Parse(Console.ReadLine());
+        contVogais++;
     }
-    else
-    {
-        System.Console.Write("Muito baixo! \nTente novamente: ");
-        number = int.Parse(Console.ReadLine());
-    }
+    /*else if(char.IsLetter(letra) && !vogais.Contains(letra)){
+        contConsoante++;
+    }*/
 }
 
-System.Console.WriteLine($"Parabéns você acertou o número! \nEle era: {randNumb}");
-
+System.Console.WriteLine($"Sua frase possui {contVogais} vogais!");
+//System.Console.WriteLine();
+//System.Console.WriteLine($"Sua frase possui {contVogais} consoantes!");
